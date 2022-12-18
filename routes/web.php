@@ -1,6 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\BahanController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GalleryController;
+use App\Http\Controllers\Admin\IntroduceController;
+use App\Http\Controllers\Admin\ManfaatController;
+use App\Http\Controllers\FrontendController;
+use App\Models\Introduce;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,11 +25,18 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/', function () {
-    return view('frontend.index');
+    $data = Introduce::all();
+    return view('frontend.index', compact('data'));
 });
+
+
 
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('/introduce', IntroduceController::class);
+    Route::resource('/bahan_baku', BahanController::class);
+    Route::resource('/manfaat', ManfaatController::class);
+    Route::resource('/gallery', GalleryController::class);
 });
 
 

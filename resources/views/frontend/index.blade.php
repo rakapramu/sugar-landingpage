@@ -104,14 +104,12 @@
                             class="u-align-left u-container-align-left u-container-style u-layout-cell u-right-cell u-size-30 u-size-xs-60 u-white u-layout-cell-1">
                             <div
                                 class="u-container-layout u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1">
-                                <h1 class="u-align-left u-custom-font u-font-ubuntu u-text u-text-1"> Turn your ideas
-                                    to live web
-                                    experiences</h1>
-                                <p class="u-align-left u-custom-font u-font-ubuntu u-text u-text-2">Duis aute irure
-                                    dolor in
-                                    reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                    Excepteur sint occaecat
-                                    cupidatat non proident</p>
+                                <h1 class="u-align-left u-custom-font u-font-ubuntu u-text u-text-1">
+                                    {{ $data[0]->title }}
+                                </h1>
+                                <p class="u-align-left u-custom-font u-font-ubuntu u-text u-text-2">
+                                    {{ $data[0]->content }}
+                                </p>
                                 <a href="https://nicepage.com/html-website-builder"
                                     class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-3-base u-radius-50 u-btn-2"><span
                                         class="u-icon"><svg class="u-svg-content" viewBox="0 0 513.64 513.64"
@@ -155,11 +153,9 @@
                         <div class="u-align-left u-container-style u-layout-cell u-size-30 u-layout-cell-1">
                             <div class="u-container-layout u-container-layout-1">
                                 <h2 class="u-custom-font u-font-montserrat u-text u-text-1">About Us</h2>
-                                <p class="u-custom-font u-font-montserrat u-text u-text-2"> Duis aute irure dolor in
-                                    reprehenderit in
-                                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                    cupidatat non
-                                    proident, sunt in culpa qui officia deserunt mollit anim.<br>
+                                <p class="u-custom-font u-font-montserrat u-text u-text-2">
+                                    {!! $data[0]->about !!}
+                                    <br>
                                     <br>
                                     <span style="font-weight: 700;"> Lorem ipsum dolor sit amet, consectetur adipiscing
                                         elit, sed do
@@ -188,47 +184,26 @@
                     </div>
                 </div>
             </div>
-            <h1 class="u-text u-text-default u-title u-text-4">Sample Headline</h1>
+
+            {{-- manfaat --}}
+            <h1 class="u-text u-text-default u-title u-text-4">Manfaat</h1>
             <div class="u-expanded-width u-list u-list-1">
                 <div class="u-repeater u-repeater-1">
                     <div
                         class="u-align-left u-container-style u-custom-item u-list-item u-repeater-item u-shape-rectangle">
-                        <div class="u-container-layout u-similar-container u-container-layout-3">
-                            <h2
-                                class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-2-base u-text-5">
-                                01</h2>
-                            <h5 class="u-custom-font u-font-montserrat u-text u-text-6">Develop​ment</h5>
-                            <p class="u-text u-text-7"> Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit</p>
-                        </div>
-                    </div>
-                    <div
-                        class="u-align-left u-container-style u-custom-item u-list-item u-repeater-item u-shape-rectangle">
-                        <div class="u-container-layout u-similar-container u-container-layout-4">
-                            <h2
-                                class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-2-base u-text-8">
-                                02</h2>
-                            <h5 class="u-custom-font u-font-montserrat u-text u-text-9">Design projects</h5>
-                            <p class="u-text u-text-10"> Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit</p>
-                        </div>
-                    </div>
-                    <div
-                        class="u-align-left u-container-style u-custom-item u-list-item u-repeater-item u-shape-rectangle">
-                        <div class="u-container-layout u-similar-container u-container-layout-5">
-                            <h2
-                                class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-2-base u-text-11">
-                                03</h2>
-                            <h5 class="u-custom-font u-font-montserrat u-text u-text-12">New materials</h5>
-                            <p class="u-text u-text-13"> Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                velit</p>
-                        </div>
+                        @foreach ($bahan as $item)
+                            <div class="u-container-layout u-similar-container u-container-layout-3">
+                                <h2
+                                    class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-2-base u-text-5">
+                                    {{ $loop->iteration }}</h2>
+                                <h5 class="u-custom-font u-font-montserrat u-text u-text-6">{{ $item->bahan_bakuu }}
+                                </h5>
+                                <p class="u-text u-text-7"> Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                                    laboris nisi ut
+                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                    velit</p>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
