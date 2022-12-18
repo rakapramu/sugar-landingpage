@@ -17,9 +17,9 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user()->roles == 'admin') {
-            return $next($request);
+        if (Auth::user()->roles != "admin") {
+            return redirect('/home')->with('success', 'Access Denied');
         }
-        return '/';
+        return $next($request);
     }
 }
