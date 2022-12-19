@@ -43,7 +43,7 @@
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-company">Manfaat</label>
-                                <textarea name="manfaat" cols="30" id="bahan" class="form-control"></textarea>
+                                <input type="text" name="manfaat" class="form-control">
                             </div>
                             <button type="submit" class="btn btn-primary">Save</button>
                         </form>
@@ -53,9 +53,3 @@
         </div>
     </div>
 @endsection
-@push('js')
-    <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace('manfaat');
-    </script>
-@endpush

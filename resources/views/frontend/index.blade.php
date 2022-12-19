@@ -105,10 +105,10 @@
                             <div
                                 class="u-container-layout u-valign-top-md u-valign-top-sm u-valign-top-xs u-container-layout-1">
                                 <h1 class="u-align-left u-custom-font u-font-ubuntu u-text u-text-1">
-                                    {{ $data[0]->title }}
+                                    {{ $datas[0]->title }}
                                 </h1>
                                 <p class="u-align-left u-custom-font u-font-ubuntu u-text u-text-2">
-                                    {{ $data[0]->content }}
+                                    {{ $datas[0]->content }}
                                 </p>
                                 <a href="https://nicepage.com/html-website-builder"
                                     class="u-border-2 u-border-grey-75 u-btn u-btn-round u-button-style u-hover-palette-4-base u-palette-3-base u-radius-50 u-btn-2"><span
@@ -130,7 +130,7 @@
                                     <div
                                         class="u-container-layout u-valign-bottom-lg u-valign-bottom-md u-valign-bottom-xl u-container-layout-3">
                                         <img class="u-expanded-width-md u-hover-feature u-image u-image-default u-image-1"
-                                            src="{{ asset('front') }}/images/portrait-successful-man-having-stubble-posing-with-broad-smile-keeping-arms-folded.png"
+                                            src="{{ Storage::url('public/image/introduce/') . $datas[0]->image }}"
                                             alt="" data-image-width="679" data-image-height="1000"
                                             data-animation-name="customAnimationIn" data-animation-duration="1000"
                                             data-animation-direction="" data-animation-out="1">
@@ -154,7 +154,7 @@
                             <div class="u-container-layout u-container-layout-1">
                                 <h2 class="u-custom-font u-font-montserrat u-text u-text-1">About Us</h2>
                                 <p class="u-custom-font u-font-montserrat u-text u-text-2">
-                                    {!! $data[0]->about !!}
+                                    {!! $datas[0]->about !!}
                                     <br>
                                     <br>
                                     <span style="font-weight: 700;"> Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -189,22 +189,22 @@
             <h1 class="u-text u-text-default u-title u-text-4">Manfaat</h1>
             <div class="u-expanded-width u-list u-list-1">
                 <div class="u-repeater u-repeater-1">
-                    <div
-                        class="u-align-left u-container-style u-custom-item u-list-item u-repeater-item u-shape-rectangle">
-                        @foreach ($bahan as $item)
+                    @foreach ($bahan as $item)
+                        <div
+                            class="u-align-left u-container-style u-custom-item u-list-item u-repeater-item u-shape-rectangle">
                             <div class="u-container-layout u-similar-container u-container-layout-3">
                                 <h2
                                     class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-2-base u-text-5">
                                     {{ $loop->iteration }}</h2>
-                                <h5 class="u-custom-font u-font-montserrat u-text u-text-6">{{ $item->bahan_bakuu }}
+                                <h5 class="u-custom-font u-font-montserrat u-text u-text-6">
+                                    {{ $item->bahan_baku }}
                                 </h5>
-                                <p class="u-text u-text-7"> Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                                    laboris nisi ut
-                                    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                    velit</p>
+                                <p class="u-text u-text-7">
+                                    {!! $item->deskripsi !!}
+                                </p>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -213,7 +213,7 @@
     {{-- Manfaat Section --}}
     <section class="u-align-center u-clearfix u-section-3" id="sec-ad86">
         <div class="u-clearfix u-sheet u-sheet-1">
-            <h1 class="u-text u-text-default u-text-1">Sample Headline</h1>
+            <h1 class="u-text u-text-default u-text-1">Manfaat</h1>
             <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
                 <div class="u-layout">
                     <div class="u-layout-row">
@@ -231,66 +231,31 @@
                                 class="u-container-layout u-valign-bottom-md u-valign-bottom-sm u-valign-bottom-xs u-container-layout-2">
                                 <div class="u-list u-list-1">
                                     <div class="u-repeater u-repeater-1">
-                                        <div class="u-container-style u-list-item u-repeater-item">
-                                            <div class="u-container-layout u-similar-container u-container-layout-3">
-                                                <span class="u-icon u-icon-circle u-text-palette-1-base u-icon-1"><svg
-                                                        class="u-svg-link" preserveAspectRatio="xMidYMin slice"
-                                                        viewBox="0 0 515.556 515.556" style="">
-                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                            xlink:href="#svg-425d"></use>
-                                                    </svg><svg class="u-svg-content" viewBox="0 0 515.556 515.556"
-                                                        id="svg-425d">
-                                                        <path
-                                                            d="m0 274.226 176.549 176.886 339.007-338.672-48.67-47.997-290.337 290-128.553-128.552z">
-                                                        </path>
-                                                    </svg>
+                                        @foreach ($manfaat as $item)
+                                            <div class="u-container-style u-list-item u-repeater-item">
+                                                <div
+                                                    class="u-container-layout u-similar-container u-container-layout-3">
+                                                    <span
+                                                        class="u-icon u-icon-circle u-text-palette-1-base u-icon-1"><svg
+                                                            class="u-svg-link" preserveAspectRatio="xMidYMin slice"
+                                                            viewBox="0 0 515.556 515.556" style="">
+                                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                                xlink:href="#svg-425d"></use>
+                                                        </svg><svg class="u-svg-content" viewBox="0 0 515.556 515.556"
+                                                            id="svg-425d">
+                                                            <path
+                                                                d="m0 274.226 176.549 176.886 339.007-338.672-48.67-47.997-290.337 290-128.553-128.552z">
+                                                            </path>
+                                                        </svg>
 
 
-                                                </span>
-                                                <p class="u-text u-text-default u-text-2">Sample text. Click to select
-                                                    the text box.&nbsp;</p>
+                                                    </span>
+                                                    <p class="u-text u-text-default u-text-2">
+                                                        {{ $item->manfaat }}.&nbsp;
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="u-container-style u-list-item u-repeater-item">
-                                            <div class="u-container-layout u-similar-container u-container-layout-4">
-                                                <span class="u-icon u-icon-circle u-text-palette-1-base u-icon-2"><svg
-                                                        class="u-svg-link" preserveAspectRatio="xMidYMin slice"
-                                                        viewBox="0 0 515.556 515.556" style="">
-                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                            xlink:href="#svg-fafe"></use>
-                                                    </svg><svg class="u-svg-content" viewBox="0 0 515.556 515.556"
-                                                        id="svg-fafe">
-                                                        <path
-                                                            d="m0 274.226 176.549 176.886 339.007-338.672-48.67-47.997-290.337 290-128.553-128.552z">
-                                                        </path>
-                                                    </svg>
-
-
-                                                </span>
-                                                <p class="u-text u-text-default u-text-3">Sample text. Click to select
-                                                    the text box.&nbsp;</p>
-                                            </div>
-                                        </div>
-                                        <div class="u-container-style u-list-item u-repeater-item">
-                                            <div class="u-container-layout u-similar-container u-container-layout-5">
-                                                <span class="u-icon u-icon-circle u-text-palette-1-base u-icon-3"><svg
-                                                        class="u-svg-link" preserveAspectRatio="xMidYMin slice"
-                                                        viewBox="0 0 515.556 515.556" style="">
-                                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
-                                                            xlink:href="#svg-53ec"></use>
-                                                    </svg><svg class="u-svg-content" viewBox="0 0 515.556 515.556"
-                                                        id="svg-53ec">
-                                                        <path
-                                                            d="m0 274.226 176.549 176.886 339.007-338.672-48.67-47.997-290.337 290-128.553-128.552z">
-                                                        </path>
-                                                    </svg>
-
-
-                                                </span>
-                                                <p class="u-text u-text-default u-text-4">Sample text. Click to select
-                                                    the text box. . </p>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <a href="https://nicepage.com/web-design"
@@ -309,6 +274,8 @@
             </div>
         </div>
     </section>
+
+    {{-- Gallery Product --}}
     <section class="u-align-center u-clearfix u-container-align-center u-palette-3-base u-section-4"
         id="carousel_ddd6">
         <div class="u-expanded-width u-shape u-shape-rectangle u-white u-shape-1"></div>
@@ -321,91 +288,18 @@
         </div>
         <div class="u-gallery u-layout-grid u-lightbox u-show-text-on-hover u-gallery-1">
             <div class="u-gallery-inner u-gallery-inner-1">
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
-                    <div class="u-back-slide" data-image-width="600" data-image-height="750">
-                        <img class="u-back-image u-expanded" src="{{ asset('front') }}/images/rre.jpg">
+                @foreach ($gallery as $item)
+                    <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
+                        <div class="u-back-slide" data-image-width="400" data-image-height="500">
+                            <img class="u-back-image u-expanded"
+                                src="{{ Storage::url('public/image/gallery/') . $item->image }}">
+                        </div>
+                        <div class="u-over-slide u-shading u-over-slide-1">
+                            <h3 class="u-gallery-heading"></h3>
+                            <p class="u-gallery-text"></p>
+                        </div>
                     </div>
-                    <div class="u-over-slide u-shading u-over-slide-1">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle" data-image-width="600"
-                    data-image-height="750">
-                    <div class="u-back-slide" data-image-width="700" data-image-height="700">
-                        <img class="u-back-image u-expanded" src="{{ asset('front') }}/images/j.jpg">
-                    </div>
-                    <div class="u-over-slide u-shading u-over-slide-2">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
-                    <div class="u-back-slide" data-image-width="700" data-image-height="700">
-                        <img class="u-back-image u-expanded" src="{{ asset('front') }}/images/trrt.jpg">
-                    </div>
-                    <div class="u-over-slide u-shading u-over-slide-3">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
-                    <div class="u-back-slide" data-image-width="700" data-image-height="700">
-                        <img class="u-back-image u-expanded" src="{{ asset('front') }}/images/gh.jpg">
-                    </div>
-                    <div class="u-over-slide u-shading u-over-slide-4">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
-                    <div class="u-back-slide" data-image-width="700" data-image-height="700">
-                        <img class="u-back-image u-expanded" src="{{ asset('front') }}/images/ghghe4.jpg">
-                    </div>
-                    <div class="u-over-slide u-shading u-over-slide-5">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
-                    <div class="u-back-slide" data-image-width="700" data-image-height="700">
-                        <img class="u-back-image u-expanded" src="{{ asset('front') }}/images/1.jpg">
-                    </div>
-                    <div class="u-over-slide u-shading u-over-slide-6">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
-                    <div class="u-back-slide" data-image-width="1920" data-image-height="1080">
-                        <img class="u-back-image u-expanded"
-                            src="{{ asset('front') }}/images/medium-shot-person-holding-bread.jpg">
-                    </div>
-                    <div class="u-over-slide u-shading u-over-slide-7">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
-                    <div class="u-back-slide" data-image-width="626" data-image-height="417">
-                        <img class="u-back-image u-expanded"
-                            src="{{ asset('front') }}/images/rustic-bread-wood-table-dark-wooden-background_155003-1681.jpg">
-                    </div>
-                    <div class="u-over-slide u-shading u-over-slide-8">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
-                <div class="u-effect-fade u-effect-hover-zoom u-gallery-item u-shape-rectangle">
-                    <div class="u-back-slide" data-image-width="1380" data-image-height="920">
-                        <img class="u-back-image u-expanded"
-                            src="{{ asset('front') }}/images/b1182e8f-cee4-f571-00ff-b553b7f96898.jpg">
-                    </div>
-                    <div class="u-over-slide u-shading u-over-slide-9">
-                        <h3 class="u-gallery-heading"></h3>
-                        <p class="u-gallery-text"></p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

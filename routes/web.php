@@ -24,10 +24,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', function () {
-    $data = Introduce::all();
-    return view('frontend.index', compact('data'));
-});
+Route::get('/', [FrontendController::class, 'index']);
 
 
 
